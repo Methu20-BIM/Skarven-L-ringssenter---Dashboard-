@@ -1,6 +1,19 @@
 {
-  "generated": null,
-  "source": null,
-  "total": 0,
-  "issues": []
+  "generated": "2026-05-26T16:43:37",
+  "source": "Test_20260526_1200.bcf",
+  "total": 1,
+  "issues": [
+    {
+      "id": "#BCF-TEST-GUI",
+      "title": "—",
+      "disciplines": [
+        "VA",
+        "ARK"
+      ],
+      "status": "Åpen",
+      "priority": "—",
+      "assigned": "—",
+      "date": "—"
+    }
+  ]
 }
