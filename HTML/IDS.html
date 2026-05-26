@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>IDS Validering — Skarven Læringssenter</title>
+  <link rel="stylesheet" href="../CSS/styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <aside class="sidebar">
+    <div class="sidebar-logo">
+      <div class="logo-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/>
+          <polyline points="9 22 9 12 15 12 15 22"/>
+        </svg>
+      </div>
+      <span class="logo-text">Skarven <strong>Læringssenter</strong></span>
+    </div>
+
+    <nav class="sidebar-nav">
+      <div class="nav-section-label">Meny</div>
+      <a href="index.html" class="nav-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+        Dashboard
+      </a>
+      <a href="3Dmodell.html" class="nav-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/></svg>
+        3D Modell
+      </a>
+      <a href="BCF.html" class="nav-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+        BCF Issues
+        <span class="nav-badge">14</span>
+      </a>
+      <a href="IDS.html" class="nav-item active">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
+        IDS Validering
+        <span class="nav-badge error">3</span>
+      </a>
+      <a href="Anlyse.html" class="nav-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        Analyse
+      </a>
+
+      <div class="nav-section-label" style="margin-top:1.5rem">Fag</div>
+      <a href="#" class="nav-item"><span class="discipline-dot" style="background:#00a10d"></span>ARK</a>
+      <a href="#" class="nav-item"><span class="discipline-dot" style="background:#10b981"></span>LARK</a>
+      <a href="#" class="nav-item"><span class="discipline-dot" style="background:#f59e0b"></span>RIE</a>
+      <a href="#" class="nav-item"><span class="discipline-dot" style="background:#ef4444"></span>VEG</a>
+      <a href="#" class="nav-item"><span class="discipline-dot" style="background:#ef4444"></span>VA</a>
+    </nav>
+  </aside>
+
+  <main class="main">
+    <header class="topbar">
+      <div class="topbar-left">
+        <h1 class="page-title">IDS Validering</h1>
+      </div>
+      <div class="topbar-right">
+        <button class="btn btn-secondary">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M3 6h18M8 6V4h8v2M19 6l-1 14H6L5 6"/></svg>
+          Filter
+        </button>
+      </div>
+    </header>
+
+    <section class="main-grid" style="padding:20px 28px">
+      <div class="card chart-card" style="grid-column:1 / -1">
+        <div class="card-header">
+          <h2 class="card-title">IDS Valideringsresultater</h2>
+        </div>
+        <div class="ids-chart-container">
+          <div class="ids-bar-chart">
+            <div class="bar-row">
+              <span class="bar-label">ARK</span>
+              <div class="bar-track">
+                <div class="bar-fill bar-fill--pass" style="width:88%"><span class="bar-pct">88%</span></div>
+                <div class="bar-fill bar-fill--fail" style="width:12%"></div>
+              </div>
+              <span class="bar-count">1 042 / 1 184</span>
+            </div>
+            <div class="bar-row">
+              <span class="bar-label">LARK</span>
+              <div class="bar-track">
+                <div class="bar-fill bar-fill--pass" style="width:95%"><span class="bar-pct">95%</span></div>
+                <div class="bar-fill bar-fill--fail" style="width:5%"></div>
+              </div>
+              <span class="bar-count">412 / 432</span>
+            </div>
+            <div class="bar-row">
+              <span class="bar-label">RIE</span>
+              <div class="bar-track">
+                <div class="bar-fill bar-fill--pass" style="width:91%"><span class="bar-pct">91%</span></div>
+                <div class="bar-fill bar-fill--fail" style="width:9%"></div>
+              </div>
+              <span class="bar-count">1 820 / 2 000</span>
+            </div>
+            <div class="bar-row">
+              <span class="bar-label">VA</span>
+              <div class="bar-track">
+                <div class="bar-fill bar-fill--pass" style="width:97%"><span class="bar-pct">97%</span></div>
+                <div class="bar-fill bar-fill--fail" style="width:3%"></div>
+              </div>
+              <span class="bar-count">2 910 / 3 000</span>
+            </div>
+            <div class="bar-row">
+              <span class="bar-label">VEG</span>
+              <div class="bar-track">
+                <div class="bar-fill bar-fill--pass" style="width:93%"><span class="bar-pct">93%</span></div>
+                <div class="bar-fill bar-fill--fail" style="width:7%"></div>
+              </div>
+              <span class="bar-count">680 / 730</span>
+            </div>
+          </div>
+          <div class="ids-legend">
+            <span class="legend-item"><span class="legend-dot" style="background:#10b981"></span>Godkjent</span>
+            <span class="legend-item"><span class="legend-dot" style="background:#ef4444"></span>Feil</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="card errors-card" style="grid-column:1 / -1">
+        <div class="card-header">
+          <h2 class="card-title">Valideringsfeil</h2>
+          <span class="error-count-badge">3 kritiske</span>
+        </div>
+        <div class="error-list">
+          <div class="error-item error-item--critical">
+            <div class="error-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+            </div>
+            <div class="error-content">
+              <div class="error-title">Manglende Pset_WallCommon.IsExternal</div>
+              <div class="error-meta">
+                <span class="tag tag--ark">ARK</span>
+                <span>142 elementer berørt</span>
+                <span class="error-rule">IDS regel: ARK-WALL-001</span>
+              </div>
+            </div>
+            <button class="btn btn-secondary btn-sm">Vis</button>
+          </div>
+          <div class="error-item error-item--critical">
+            <div class="error-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+            </div>
+            <div class="error-content">
+              <div class="error-title">Ugyldig IFC-klassifikasjon for kabel</div>
+              <div class="error-meta">
+                <span class="tag tag--rie">RIE</span>
+                <span>38 elementer berørt</span>
+                <span class="error-rule">IDS regel: RIE-CABLE-003</span>
+              </div>
+            </div>
+            <button class="btn btn-secondary btn-sm">Vis</button>
+          </div>
+          <div class="error-item error-item--critical">
+            <div class="error-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+            </div>
+            <div class="error-content">
+              <div class="error-title">Manglende GlobalId i IfcSpace</div>
+              <div class="error-meta">
+                <span class="tag tag--ark">ARK</span>
+                <span>7 elementer berørt</span>
+                <span class="error-rule">IDS regel: GEN-SPACE-001</span>
+              </div>
+            </div>
+            <button class="btn btn-secondary btn-sm">Vis</button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="../JS/app.js" defer></script>
+</body>
+</html>

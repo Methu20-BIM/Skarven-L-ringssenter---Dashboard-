@@ -1,0 +1,12 @@
+# Legg IFC-filene dine her.
+# Filnavnene må stemme nøyaktig med listen i JS/files.js:
+#
+#   Fischer-Nikolai_SL1-B_E-2026.ifc
+#   Saelid-Kristoffer_SL1-A_E-2026.ifc
+#   Castro-Maria_LARK_E-2026.ifc
+#   Kilinc-Kaan_RIE_SL1-B_E-2026.ifc
+#   Thurairajah-Methuban_VA_E-2026.ifc
+#   Thurairajah-Methuban_VEG_E-2026.ifc
+#
+# Maks filstørrelse på GitHub: 100 MB per fil.
+# Større filer → bruk Git LFS (se README.md).

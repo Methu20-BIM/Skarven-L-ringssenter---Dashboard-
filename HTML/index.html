@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Skarven Dashboard</title>
+  <link rel="stylesheet" href="../CSS/styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!--
+    IMPORTMAP — løser bare-specifiers til CDN
+    Three.js + OrbitControls via unpkg.
+    web-ifc importeres direkte som full URL i viewer.js.
+  -->
+  <script type="importmap">
+  {
+    "imports": {
+      "three":         "https://unpkg.com/three@0.164.1/build/three.module.js",
+      "three/addons/": "https://unpkg.com/three@0.164.1/examples/jsm/"
+    }
+  }
+  </script>
+</head>
+<body>
+
+  <!-- ══════════════════════════════════════
+       SIDEBAR
+  ═══════════════════════════════════════════ -->
+  <aside class="sidebar">
+    <div class="sidebar-logo">
+      <div class="logo-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/>
+          <polyline points="9 22 9 12 15 12 15 22"/>
+        </svg>
+      </div>
+      <span class="logo-text">Skarven <strong>Læringssenter</strong></span>
+    </div>
+
+    <nav class="sidebar-nav">
+      <div class="nav-section-label">Meny</div>
+      <a href="index.html" class="nav-item active">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+        Dashboard
+      </a>
+      <a href="3Dmodell.html" class="nav-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/></svg>
+        3D Modell
+      </a>
+      <a href="BCF.html" class="nav-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+        BCF Issues
+        <span class="nav-badge">14</span>
+      </a>
+      <a href="IDS.html" class="nav-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
+        IDS Validering
+        <span class="nav-badge error">3</span>
+      </a>
+      <a href="Anlyse.html" class="nav-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        Analyse
+      </a>
+
+      <div class="nav-section-label" style="margin-top:1.5rem">Fag</div>
+      <a href="#" class="nav-item"><span class="discipline-dot" style="background:#6366f1"></span>ARK</a>
+      <a href="#" class="nav-item"><span class="discipline-dot" style="background:#10b981"></span>LARK</a>
+      <a href="#" class="nav-item"><span class="discipline-dot" style="background:#f59e0b"></span>RIE</a>
+      <a href="#" class="nav-item"><span class="discipline-dot" style="background:#06b6d4"></span>VEG</a>
+      <a href="#" class="nav-item"><span class="discipline-dot" style="background:#8b5cf6"></span>VA</a>
+    </nav>
+  </aside>
+
+  <!-- ══════════════════════════════════════
+       MAIN
+  ═══════════════════════════════════════════ -->
+  <main class="main">
+
+    <!-- TOPBAR -->
+    <header class="topbar">
+      <div class="topbar-left">
+        <h1 class="page-title">Dashboard</h1>
+        <div class="breadcrumb">Skarven Læringssenter · Eksamen 2026</div>
+      </div>
+      <div class="topbar-right">
+        <div class="folder-status" id="folderStatus">
+          <span class="folder-dot folder-dot--loading" id="folderDot"></span>
+          <span class="folder-label" id="folderLabel">Sjekker…</span>
+        </div>
+        <button class="btn btn-secondary" id="pickFolderBtn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16">
+            <path d="M22 19a2 2 0 01-2 2H4a2 2 0 01-2-2V5a2 2 0 012-2h5l2 3h9a2 2 0 012 2z"/>
+          </svg>
+          Velg IFC-mappe
+        </button>
+      </div>
+    </header>
+
+    <!-- MEMBERS GRID -->
+    <section class="members-section">
+      <div class="section-header">
+        <h2 class="section-title">Prosjektmedlemmer</h2>
+        <span class="section-sub">5 studenter · 6 IFC-filer</span>
+      </div>
+
+      <div class="members-grid">
+
+        <!-- ARK -->
+        <button class="member-card member-card--bg" data-group="ark"
+                style="background-image:url('../Background/ARK.jpg')">
+          <div class="member-card-content">
+            <div class="member-card-label">ARK</div>
+            <div class="member-name">Arkitektur</div>
+            <div class="member-sub">Fischer · Sælid</div>
+            <div class="member-role">
+              <span class="discipline-dot" style="background:#6366f1"></span>2 IFC-filer
+            </div>
+          </div>
+        </button>
+
+        <!-- LARK -->
+        <button class="member-card member-card--bg" data-group="lark"
+                style="background-image:url('../Background/LARK.webp')">
+          <div class="member-card-content">
+            <div class="member-card-label">LARK</div>
+            <div class="member-name">Landskapsarkitektur</div>
+            <div class="member-sub">Castro Mendoza</div>
+            <div class="member-role">
+              <span class="discipline-dot" style="background:#10b981"></span>1 IFC-fil
+            </div>
+          </div>
+        </button>
+
+        <!-- RIE -->
+        <button class="member-card member-card--bg" data-group="rie"
+                style="background-image:url('../Background/RIE.jpg')">
+          <div class="member-card-content">
+            <div class="member-card-label">RIE</div>
+            <div class="member-name">Elektro</div>
+            <div class="member-sub">Kilinc</div>
+            <div class="member-role">
+              <span class="discipline-dot" style="background:#f59e0b"></span>1 IFC-fil
+            </div>
+          </div>
+        </button>
+
+        <!-- VA / VEG -->
+        <button class="member-card member-card--bg" data-group="methuban"
+                style="background-image:url('../Background/VA.jpeg')">
+          <div class="member-card-content">
+            <div class="member-card-label">IN</div>
+            <div class="member-name">Infrastruktur</div>
+            <div class="member-sub">Thurairajah</div>
+            <div class="member-role">
+              <span class="discipline-dot" style="background:#8b5cf6"></span>VA · VEG · 2 filer
+            </div>
+          </div>
+        </button>
+
+      </div>
+    </section>
+
+    <!-- MEMBER DETAIL -->
+    <section class="member-detail" id="memberDetail" hidden>
+      <div class="card detail-card">
+
+        <div class="card-header">
+          <h2 class="card-title">Medlemsdetaljer</h2>
+          <button class="btn-icon" id="closeDetail" title="Lukk">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16">
+              <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+            </svg>
+          </button>
+        </div>
+
+        <div class="detail-tabs" id="detailTabs"></div>
+
+        <div class="detail-body">
+
+          <!-- Info-kolonne -->
+          <div class="detail-info">
+            <!-- Profilbilde (vises etter kortklikk) -->
+            <div class="detail-photo-wrap" id="detailPhotoWrap" style="display:none">
+              <img class="detail-photo" id="detailPhoto" src="" alt=""
+                   onerror="document.getElementById('detailPhotoWrap').style.display='none'">
+            </div>
+
+            <div class="detail-row">
+              <span class="detail-label">Fornavn</span>
+              <strong class="detail-value" data-field="firstName">—</strong>
+            </div>
+            <div class="detail-row">
+              <span class="detail-label">Etternavn</span>
+              <strong class="detail-value" data-field="lastName">—</strong>
+            </div>
+            <div class="detail-row">
+              <span class="detail-label">Fag</span>
+              <strong class="detail-value" data-field="discipline">—</strong>
+            </div>
+            <div class="detail-row detail-row--block">
+              <span class="detail-label">Problemstilling</span>
+              <p class="detail-text" data-field="problem">—</p>
+            </div>
+          </div>
+
+          <!-- 3D Viewer-kolonne -->
+          <div class="detail-viewer">
+
+            <div class="detail-viewer-header">
+              <div class="viewer-file-info">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14">
+                  <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/>
+                  <polyline points="14 2 14 8 20 8"/>
+                </svg>
+                <span class="detail-file" data-field="file">Ingen fil valgt</span>
+              </div>
+              <div class="viewer-header-actions">
+                <button class="btn btn-secondary btn-sm" id="fitCameraBtn" disabled title="Tilpass kamera til modell">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="13" height="13">
+                    <path d="M8 3H5a2 2 0 00-2 2v3m18 0V5a2 2 0 00-2-2h-3m0 18h3a2 2 0 002-2v-3M3 16v3a2 2 0 002 2h3"/>
+                  </svg>
+                  Fit
+                </button>
+                <button class="btn btn-primary btn-sm" id="loadIfcBtn">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="13" height="13">
+                    <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/>
+                    <polyline points="7 10 12 15 17 10"/>
+                    <line x1="12" y1="15" x2="12" y2="3"/>
+                  </svg>
+                  Last IFC
+                </button>
+              </div>
+            </div>
+
+            <!-- Three.js container — PostproductionRenderer appender canvas her -->
+            <div class="ifc-viewer-wrap" id="ifcViewerWrap">
+
+              <!-- Drop-sone (default-visning) -->
+              <div class="ifc-drop-zone" id="ifcDropZone">
+                <div class="drop-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" width="52" height="52">
+                    <path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/>
+                    <polyline points="3.27 6.96 12 12.01 20.73 6.96"/>
+                    <line x1="12" y1="22.08" x2="12" y2="12"/>
+                  </svg>
+                </div>
+                <p class="drop-title">Ingen IFC-modell lastet</p>
+                <p class="drop-expected" id="dropExpectedFile">—</p>
+                <p class="drop-hint">Dra IFC-filen hit, eller velg under</p>
+                <button class="btn btn-primary" id="dropZoneBtn">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16">
+                    <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/>
+                    <polyline points="7 10 12 15 17 10"/>
+                    <line x1="12" y1="15" x2="12" y2="3"/>
+                  </svg>
+                  Velg IFC-fil
+                </button>
+              </div>
+
+              <!-- Loading-overlay -->
+              <div class="ifc-loading-overlay" id="ifcLoadingOverlay" hidden>
+                <div class="ifc-loading-ring">
+                  <div></div><div></div><div></div><div></div>
+                </div>
+                <p class="ifc-loading-title" id="ifcLoadingTitle">Starter…</p>
+                <p class="ifc-loading-sub"   id="ifcLoadingFile"></p>
+                <!-- Synlig statuslinje fra viewer.js -->
+                <p class="ifc-viewer-status"  id="ifcViewerStatus"></p>
+                <div class="ifc-loading-steps">
+                  <span class="load-step active" id="lstep1">Initialiserer</span>
+                  <span class="load-step-arrow">→</span>
+                  <span class="load-step" id="lstep2">Parser IFC</span>
+                  <span class="load-step-arrow">→</span>
+                  <span class="load-step" id="lstep3">Geometri</span>
+                  <span class="load-step-arrow">→</span>
+                  <span class="load-step" id="lstep4">Ferdig</span>
+                </div>
+              </div>
+
+              <!-- Feil-overlay -->
+              <div class="ifc-error-overlay" id="ifcErrorOverlay" hidden>
+                <div class="error-icon-wrap">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="40" height="40">
+                    <circle cx="12" cy="12" r="10"/>
+                    <line x1="12" y1="8" x2="12" y2="12"/>
+                    <line x1="12" y1="16" x2="12.01" y2="16"/>
+                  </svg>
+                </div>
+                <p class="ifc-error-title">Kunne ikke laste filen</p>
+                <p class="ifc-error-msg" id="ifcErrorMsg">Ukjent feil</p>
+                <div class="ifc-error-hint" id="ifcErrorHint"></div>
+                <button class="btn btn-secondary btn-sm" id="retryBtn">Prøv igjen</button>
+              </div>
+
+            </div><!-- /ifcViewerWrap -->
+
+            <!-- Egenskaps-panel -->
+            <div class="ifc-props-panel" id="ifcPropsPanel" hidden>
+              <div class="props-header">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14">
+                  <circle cx="12" cy="12" r="10"/>
+                  <line x1="12" y1="8" x2="12" y2="12"/>
+                  <line x1="12" y1="16" x2="12.01" y2="16"/>
+                </svg>
+                Valgt element
+              </div>
+              <div class="props-grid">
+                <span class="prop-key">Type</span>      <span class="prop-val"  id="propType">—</span>
+                <span class="prop-key">Navn</span>      <span class="prop-val"  id="propName">—</span>
+                <span class="prop-key">GlobalId</span>  <code  class="prop-code" id="propGlobalId">—</code>
+                <span class="prop-key">Tag</span>       <span class="prop-val"  id="propTag">—</span>
+                <span class="prop-key">Express ID</span><span class="prop-val"  id="propExpressId">—</span>
+              </div>
+            </div>
+
+            <input type="file" id="ifcFileInput" accept=".ifc" style="display:none">
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <script type="module" src="../JS/files.js"></script>
+  <script type="module" src="../JS/viewer.js"></script>
+  <script src="../JS/app.js" defer></script>
+</body>
+</html>

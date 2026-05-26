@@ -1,0 +1,14 @@
+# Node.js
+node_modules/
+
+# Lokal utviklingsserver (ikke nødvendig på GitHub)
+# server.js er bevisst inkludert for lokal utvikling
+
+# OS-filer
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Midlertidige filer
+*.tmp
+*.log

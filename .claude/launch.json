@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "Skarven Dashboard",
+      "runtimeExecutable": "node",
+      "runtimeArgs": ["server.js"],
+      "port": 7777
+    }
+  ]
+}

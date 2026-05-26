@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Analyse — Skarven Læringssenter</title>
+  <link rel="stylesheet" href="../CSS/styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <aside class="sidebar">
+    <div class="sidebar-logo">
+      <div class="logo-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/>
+          <polyline points="9 22 9 12 15 12 15 22"/>
+        </svg>
+      </div>
+      <span class="logo-text">Skarven <strong>Læringssenter</strong></span>
+    </div>
+
+    <nav class="sidebar-nav">
+      <div class="nav-section-label">Meny</div>
+      <a href="index.html" class="nav-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+        Dashboard
+      </a>
+      <a href="3Dmodell.html" class="nav-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/></svg>
+        3D Modell
+      </a>
+      <a href="BCF.html" class="nav-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+        BCF Issues
+        <span class="nav-badge">14</span>
+      </a>
+      <a href="IDS.html" class="nav-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
+        IDS Validering
+        <span class="nav-badge error">3</span>
+      </a>
+      <a href="Anlyse.html" class="nav-item active">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        Analyse
+      </a>
+
+      <div class="nav-section-label" style="margin-top:1.5rem">Fag</div>
+      <a href="#" class="nav-item"><span class="discipline-dot" style="background:#00a10d"></span>ARK</a>
+      <a href="#" class="nav-item"><span class="discipline-dot" style="background:#10b981"></span>LARK</a>
+      <a href="#" class="nav-item"><span class="discipline-dot" style="background:#f59e0b"></span>RIE</a>
+      <a href="#" class="nav-item"><span class="discipline-dot" style="background:#ef4444"></span>VEG</a>
+      <a href="#" class="nav-item"><span class="discipline-dot" style="background:#ef4444"></span>VA</a>
+    </nav>
+  </aside>
+
+  <main class="main">
+    <header class="topbar">
+      <div class="topbar-left">
+        <h1 class="page-title">Analyse</h1>
+      </div>
+      <div class="topbar-right">
+        <button class="btn btn-secondary">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M3 6h18M8 6V4h8v2M19 6l-1 14H6L5 6"/></svg>
+          Filter
+        </button>
+      </div>
+    </header>
+
+    <section class="kpi-grid">
+      <div class="kpi-card">
+        <div class="kpi-icon kpi-icon--blue">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/></svg>
+        </div>
+        <div class="kpi-content">
+          <div class="kpi-value">12 847</div>
+          <div class="kpi-label">IFC-elementer</div>
+          <div class="kpi-delta positive">+234 siden sist</div>
+        </div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-icon kpi-icon--amber">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+        </div>
+        <div class="kpi-content">
+          <div class="kpi-value">14</div>
+          <div class="kpi-label">BCF Issues</div>
+          <div class="kpi-delta negative">+3 nye</div>
+        </div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-icon kpi-icon--red">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        </div>
+        <div class="kpi-content">
+          <div class="kpi-value">3</div>
+          <div class="kpi-label">IDS Feil</div>
+          <div class="kpi-delta negative">Kritiske</div>
+        </div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-icon kpi-icon--green">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        </div>
+        <div class="kpi-content">
+          <div class="kpi-value">94.2%</div>
+          <div class="kpi-label">IDS Samsvar</div>
+          <div class="kpi-delta positive">+1.4%</div>
+        </div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-icon kpi-icon--purple">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+        </div>
+        <div class="kpi-content">
+          <div class="kpi-value">5</div>
+          <div class="kpi-label">Aktive modeller</div>
+          <div class="kpi-delta neutral">Ingen endring</div>
+        </div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-icon kpi-icon--cyan">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        </div>
+        <div class="kpi-content">
+          <div class="kpi-value">7</div>
+          <div class="kpi-label">Medlemmer</div>
+          <div class="kpi-delta neutral">Aktiv gruppe</div>
+        </div>
+      </div>
+    </section>
+
+    <section style="padding:20px 28px">
+      <div class="card chart-card">
+        <div class="card-header">
+          <h2 class="card-title">BCF Status</h2>
+        </div>
+        <div class="donut-container">
+          <svg class="donut-svg" viewBox="0 0 120 120">
+            <circle class="donut-ring" cx="60" cy="60" r="45" />
+            <circle class="donut-segment donut-segment--open" cx="60" cy="60" r="45" stroke-dasharray="99 184" stroke-dashoffset="0" />
+            <circle class="donut-segment donut-segment--progress" cx="60" cy="60" r="45" stroke-dasharray="56 184" stroke-dashoffset="-99" />
+            <circle class="donut-segment donut-segment--solved" cx="60" cy="60" r="45" stroke-dasharray="29 184" stroke-dashoffset="-155" />
+            <text x="60" y="56" class="donut-center-num">14</text>
+            <text x="60" y="68" class="donut-center-label">Issues</text>
+          </svg>
+          <div class="donut-legend">
+            <div class="donut-legend-item">
+              <span class="donut-dot" style="background:#ef4444"></span>
+              <span>Åpen</span>
+              <strong>8</strong>
+            </div>
+            <div class="donut-legend-item">
+              <span class="donut-dot" style="background:#f59e0b"></span>
+              <span>Under arbeid</span>
+              <strong>4</strong>
+            </div>
+            <div class="donut-legend-item">
+              <span class="donut-dot" style="background:#10b981"></span>
+              <span>Løst</span>
+              <strong>2</strong>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="../JS/app.js" defer></script>
+</body>
+</html>
