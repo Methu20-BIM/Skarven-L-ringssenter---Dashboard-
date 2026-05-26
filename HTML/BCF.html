@@ -33,7 +33,7 @@
       <a href="BCF.html" class="nav-item active">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
         BCF Issues
-        <span class="nav-badge">14</span>
+        <span class="nav-badge" id="navBadge">—</span>
       </a>
       <a href="IDS.html" class="nav-item">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
@@ -46,11 +46,11 @@
       </a>
 
       <div class="nav-section-label" style="margin-top:1.5rem">Fag</div>
-      <a href="#" class="nav-item"><span class="discipline-dot" style="background:#00a10d"></span>ARK</a>
+      <a href="#" class="nav-item"><span class="discipline-dot" style="background:#6366f1"></span>ARK</a>
       <a href="#" class="nav-item"><span class="discipline-dot" style="background:#10b981"></span>LARK</a>
       <a href="#" class="nav-item"><span class="discipline-dot" style="background:#f59e0b"></span>RIE</a>
-      <a href="#" class="nav-item"><span class="discipline-dot" style="background:#ef4444"></span>VEG</a>
-      <a href="#" class="nav-item"><span class="discipline-dot" style="background:#ef4444"></span>VA</a>
+      <a href="#" class="nav-item"><span class="discipline-dot" style="background:#06b6d4"></span>VEG</a>
+      <a href="#" class="nav-item"><span class="discipline-dot" style="background:#8b5cf6"></span>VA</a>
     </nav>
   </aside>
 
@@ -58,11 +58,12 @@
     <header class="topbar">
       <div class="topbar-left">
         <h1 class="page-title">BCF Issues</h1>
+        <div class="breadcrumb" id="bcfMeta">Laster…</div>
       </div>
       <div class="topbar-right">
-        <button class="btn btn-secondary">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M3 6h18M8 6V4h8v2M19 6l-1 14H6L5 6"/></svg>
-          Filter
+        <button class="btn btn-secondary" id="oppdaterBtn" onclick="lastBCF()">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 11-2.12-9.36L23 10"/></svg>
+          Oppdater
         </button>
       </div>
     </header>
@@ -70,11 +71,11 @@
     <div class="filter-bar">
       <div class="filter-group">
         <label class="filter-label">Status:</label>
-        <div class="filter-chips">
-          <button class="chip active">Alle</button>
-          <button class="chip">Åpen</button>
-          <button class="chip">Under arbeid</button>
-          <button class="chip">Løst</button>
+        <div class="filter-chips" id="filterChips">
+          <button class="chip active" data-filter="Alle">Alle</button>
+          <button class="chip" data-filter="Åpen">Åpen</button>
+          <button class="chip" data-filter="Under arbeid">Under arbeid</button>
+          <button class="chip" data-filter="Løst">Løst</button>
         </div>
       </div>
     </div>
@@ -84,7 +85,7 @@
         <div class="card-header">
           <h2 class="card-title">BCF Issues</h2>
           <div class="card-actions">
-            <button class="btn btn-secondary btn-sm">Eksporter BCF</button>
+            <span id="kildeLabel" style="font-size:0.75rem;color:var(--text-muted)"></span>
           </div>
         </div>
         <table class="data-table">
@@ -99,68 +100,149 @@
               <th>Dato</th>
             </tr>
           </thead>
-          <tbody>
-            <tr class="table-row">
-              <td class="id-cell">#BCF-014</td>
-              <td>Kollisjon VA-rør og bjelke</td>
-              <td><span class="tag tag--rib">RIB</span><span class="tag tag--riv">VA</span></td>
-              <td><span class="status-badge status--open">Åpen</span></td>
-              <td><span class="priority priority--critical">Kritisk</span></td>
-              <td>M. Thurairajah</td>
-              <td>24.05.2026</td>
-            </tr>
-            <tr class="table-row">
-              <td class="id-cell">#BCF-013</td>
-              <td>Manglende brannkrav dør D-104</td>
-              <td><span class="tag tag--ark">ARK</span></td>
-              <td><span class="status-badge status--open">Åpen</span></td>
-              <td><span class="priority priority--high">Høy</span></td>
-              <td>N. Fischer</td>
-              <td>23.05.2026</td>
-            </tr>
-            <tr class="table-row">
-              <td class="id-cell">#BCF-012</td>
-              <td>Feil nivå terrengmodell</td>
-              <td><span class="tag tag--rib">LARK</span></td>
-              <td><span class="status-badge status--progress">Under arbeid</span></td>
-              <td><span class="priority priority--medium">Middels</span></td>
-              <td>M. Castro</td>
-              <td>21.05.2026</td>
-            </tr>
-            <tr class="table-row">
-              <td class="id-cell">#BCF-011</td>
-              <td>Manglende IfcPropertySet</td>
-              <td><span class="tag tag--rie">RIE</span></td>
-              <td><span class="status-badge status--progress">Under arbeid</span></td>
-              <td><span class="priority priority--medium">Middels</span></td>
-              <td>K. Kilinc</td>
-              <td>20.05.2026</td>
-            </tr>
-            <tr class="table-row">
-              <td class="id-cell">#BCF-010</td>
-              <td>Etasjeantall stemmer ikke</td>
-              <td><span class="tag tag--ark">ARK</span></td>
-              <td><span class="status-badge status--solved">Løst</span></td>
-              <td><span class="priority priority--low">Lav</span></td>
-              <td>K. Sælid</td>
-              <td>18.05.2026</td>
-            </tr>
+          <tbody id="bcfTabell">
+            <tr><td colspan="7" style="text-align:center;padding:2rem;color:var(--text-muted)">Laster BCF-data…</td></tr>
           </tbody>
         </table>
         <div class="table-footer">
-          <span>Viser 5 av 14 issues</span>
-          <div class="pagination">
-            <button class="page-btn">‹</button>
-            <button class="page-btn active">1</button>
-            <button class="page-btn">2</button>
-            <button class="page-btn">3</button>
-            <button class="page-btn">›</button>
-          </div>
+          <span id="tabellerFooter">—</span>
+          <div class="pagination" id="paginering"></div>
         </div>
       </div>
     </section>
   </main>
 
   <script src="../JS/app.js" defer></script>
+  <script>
+    const SIDE_STORRELSE = 10;
+    let alleIssues   = [];
+    let filtrertListe = [];
+    let aktivSide    = 1;
+    let aktivFilter  = 'Alle';
+
+    const PRIORITET_KLASSE = {
+      'Kritisk': 'priority--critical',
+      'Høy':     'priority--high',
+      'Middels': 'priority--medium',
+      'Lav':     'priority--low',
+    };
+    const STATUS_KLASSE = {
+      'Åpen':         'status--open',
+      'Under arbeid': 'status--progress',
+      'Løst':         'status--solved',
+    };
+    const FAG_KLASSE = {
+      'ARK': 'tag--ark', 'LARK': 'tag--lark', 'RIE': 'tag--rie',
+      'VA':  'tag--riv', 'VEG':  'tag--rib',  'RIB': 'tag--rib',
+    };
+
+    function lagRad(issue) {
+      const fag = (issue.disciplines || [])
+        .map(d => `<span class="tag ${FAG_KLASSE[d] || ''}">${d}</span>`)
+        .join('');
+      const statKl = STATUS_KLASSE[issue.status]    || '';
+      const priKl  = PRIORITET_KLASSE[issue.priority] || '';
+      return `<tr class="table-row">
+        <td class="id-cell">${issue.id}</td>
+        <td>${issue.title}</td>
+        <td>${fag}</td>
+        <td><span class="status-badge ${statKl}">${issue.status}</span></td>
+        <td><span class="priority ${priKl}">${issue.priority}</span></td>
+        <td>${issue.assigned}</td>
+        <td>${issue.date}</td>
+      </tr>`;
+    }
+
+    function visside(side) {
+      aktivSide = side;
+      const start = (side - 1) * SIDE_STORRELSE;
+      const slice = filtrertListe.slice(start, start + SIDE_STORRELSE);
+
+      const tabell = document.getElementById('bcfTabell');
+      if (filtrertListe.length === 0) {
+        tabell.innerHTML = `<tr><td colspan="7" style="text-align:center;padding:2rem;color:var(--text-muted)">
+          Ingen issues funnet${aktivFilter !== 'Alle' ? ' med status «' + aktivFilter + '»' : ''}.
+        </td></tr>`;
+      } else {
+        tabell.innerHTML = slice.map(lagRad).join('');
+      }
+
+      const totSider = Math.ceil(filtrertListe.length / SIDE_STORRELSE);
+      const pag = document.getElementById('paginering');
+      if (totSider <= 1) { pag.innerHTML = ''; }
+      else {
+        let knapper = side > 1 ? `<button class="page-btn" onclick="visside(${side-1})">‹</button>` : '';
+        for (let i = 1; i <= totSider; i++) {
+          knapper += `<button class="page-btn${i===side?' active':''}" onclick="visside(${i})">${i}</button>`;
+        }
+        if (side < totSider) knapper += `<button class="page-btn" onclick="visside(${side+1})">›</button>`;
+        pag.innerHTML = knapper;
+      }
+
+      document.getElementById('tabellerFooter').textContent =
+        filtrertListe.length === 0
+          ? 'Ingen issues'
+          : `Viser ${start+1}–${Math.min(start+SIDE_STORRELSE, filtrertListe.length)} av ${filtrertListe.length} issues`;
+    }
+
+    function settFilter(filter) {
+      aktivFilter  = filter;
+      aktivSide    = 1;
+      filtrertListe = filter === 'Alle'
+        ? [...alleIssues]
+        : alleIssues.filter(i => i.status === filter);
+
+      document.querySelectorAll('#filterChips .chip').forEach(c => {
+        c.classList.toggle('active', c.dataset.filter === filter);
+      });
+      visside(1);
+    }
+
+    document.querySelectorAll('#filterChips .chip').forEach(c => {
+      c.addEventListener('click', () => settFilter(c.dataset.filter));
+    });
+
+    async function lastBCF() {
+      const tabell = document.getElementById('bcfTabell');
+      tabell.innerHTML = `<tr><td colspan="7" style="text-align:center;padding:2rem;color:var(--text-muted)">Laster…</td></tr>`;
+
+      try {
+        const url = `../data/bcf-data.json?t=${Date.now()}`;
+        const resp = await fetch(url);
+        if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
+        const data = await resp.json();
+
+        alleIssues    = data.issues || [];
+        filtrertListe = [...alleIssues];
+        aktivFilter   = 'Alle';
+
+        document.querySelectorAll('#filterChips .chip').forEach(c =>
+          c.classList.toggle('active', c.dataset.filter === 'Alle'));
+
+        const badge = document.getElementById('navBadge');
+        if (badge) badge.textContent = alleIssues.length || '0';
+
+        const meta = document.getElementById('bcfMeta');
+        if (data.generated) {
+          const d = new Date(data.generated);
+          meta.textContent = `Sist oppdatert: ${d.toLocaleString('nb-NO')}`;
+        } else {
+          meta.textContent = 'Ingen BCF-data ennå — kjør BIM-kontroll';
+        }
+
+        const kilde = document.getElementById('kildeLabel');
+        if (kilde && data.source) kilde.textContent = `📄 ${data.source}`;
+
+        visside(1);
+
+      } catch (err) {
+        tabell.innerHTML = `<tr><td colspan="7" style="text-align:center;padding:2rem;color:var(--red)">
+          Kunne ikke laste BCF-data (${err.message})
+        </td></tr>`;
+      }
+    }
+
+    lastBCF();
+  </script>
 </body>
 </html>
